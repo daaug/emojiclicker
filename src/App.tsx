@@ -1,26 +1,50 @@
 import React from 'react';
+import * as ricon from 'react-icons/rx';
 import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <IconColumn />
+      <ProgressColumn />
+      <UpgradesColumn />
+    </div>
+  );
+}
+export default App;
+
+function IconColumn(){
+  return (
+    <div className='column'>
+      <img src={logo} alt=""/>
     </div>
   );
 }
 
-export default App;
+function ProgressColumn(){
+  return (
+    <div className='column'>
+      <img src={logo} alt=""/>
+    </div>
+  );
+}
+
+function UpgradesColumn(){
+  return (
+    <div className='column'>
+      <UpgradeItem icon={ricon.RxCursorArrow} name={"cursor"} cost={1} />
+    </div>
+  );
+}
+
+function UpgradeItem( props: {
+  icon: React.ComponentType<{}>, name:string, cost:number
+}){
+  return (
+    <div className='upgradeItem'>
+      <p>{ props.name }</p>
+      <p>{ props.cost }</p>
+    </div>
+  );
+}
